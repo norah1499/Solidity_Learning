@@ -30,16 +30,16 @@ contract TimeLock{
 
         //check if the lock in time is over or not  
         require(VestingTime[msg.sender] < block.timestamp, "Vesting period is not over yet");
-
+        
+        //updating the balance of user and vesting time
+        delete deposits[msg.senderl;
+        delete VestingTIime[msg.sender];
+        
         //sending money from contracts address to user
         (bool sent, ) = msg.sender.call{value : deposits[msg.sender]}("");
 
         //checking if the transacton went succesfull or not
-        require(sent,"Failed to send ether");
-
-        //updating the balance of user
-        deposits[msg.sender] = 0;
-
+        require(sent,"Failed to send ether");        
     }
 
 }
